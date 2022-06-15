@@ -44,6 +44,9 @@ public class Doctor {
     public String getGender() {
         return gender;
     }
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public void setGender(String gender) {
         this.gender = gender;
@@ -53,7 +56,5 @@ public class Doctor {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+
 }
