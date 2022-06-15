@@ -1,13 +1,14 @@
 public class Doctor {
     private String firstName;
     private String lastName;
-    private String gender;
+    private Gender gender;
     private int age;
     private static int id = 100;
     private int doctorId;
 
 
-    public Doctor(String firstName, String lastName, String gender, int age) {
+
+    public Doctor(String firstName, String lastName, Gender gender, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -39,14 +40,14 @@ public class Doctor {
         this.lastName = lastName;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
     public void setAge(int age) {
         this.age = age;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
