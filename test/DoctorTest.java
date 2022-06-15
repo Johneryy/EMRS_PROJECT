@@ -1,24 +1,4 @@
-import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 class DoctorTest {
-
-  @Test
-    void getFirstName() {
-    }
-
-
-    void setFirstName() {
-    }
-
-
-    void getLastName() {
-    }
-
-
-    void setLastName() {
-    }
-
-    void getGender() {
-    }
-
+  
 }
