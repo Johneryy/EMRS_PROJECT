@@ -3,6 +3,8 @@ public class Doctor {
     private String lastName;
     private String gender;
     private int age;
+    private static int id = 100;
+    private int doctorId;
 
 
     public Doctor(String firstName, String lastName, String gender, int age) {
@@ -10,7 +12,16 @@ public class Doctor {
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
+        doctorId = id++;
     }
+    public int getDoctorId(){
+        return doctorId;
+    }
+    
+    public void setDoctorId(int id){
+        doctorId = id;
+    }
+    
 
     public String getFirstName() {
         return firstName;
