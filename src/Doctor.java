@@ -9,10 +9,10 @@ public class Doctor {
 
 
 
-    public Doctor(String firstName, String lastName, String gender, int age) {
+    public Doctor(String firstName, String lastName, Gender gender, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.gender = gender;
+        this.gender = String.valueOf(gender);
         this.age = age;
         doctorId = id++;
     }

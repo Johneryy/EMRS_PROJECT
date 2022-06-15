@@ -5,7 +5,11 @@ public class MedicalTest {
 
     public MedicalTest(String testName){
         this.testName = testName;
-        testId = ++id;
+        testId = id++;
+    }
+
+    public static void resetId() {
+        id = 1;
     }
 
     public int getTestId() {
