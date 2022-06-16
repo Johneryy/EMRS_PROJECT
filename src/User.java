@@ -68,4 +68,13 @@ public class User {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                id: %d
+                name: %s %s
+                email: %s
+                """,getUserId(),getFirstName(),getLastName(),getEmail());
+    }
 }

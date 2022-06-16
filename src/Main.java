@@ -1,5 +1,6 @@
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -30,13 +31,14 @@ public class Main {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            main(args);
         }
     }
 
     private static void autoEmployDoctorsAndCreateTests() {
-        String[] defaultFirstNames = {"mike","Boyo","Chidi","nwannem","jodi","ben"};
+        String[] defaultFirstNames = {"Mike","Boyo","Chidi","nwannem","jodi","ben"};
 
-        String[] defaultLastNames = {"kike","lomo","omalicham","oyibo","ngozi","chukwudi",};
+        String[] defaultLastNames = {"kolade","lomo","omalicham","oyibo","ngozi","chukwudi",};
         Gender[] gender = {Gender.MALE,Gender.FEMALE,Gender.NON_BINARY};
         String[] tests= {"Hiv", "Malaria", "Gonorrhoea","diabetes","High Blood Pressure","Fever"};
         Random random = new Random();
@@ -117,7 +119,7 @@ public class Main {
             List<MedicalTest> tests = record.getTests();
             for(MedicalTest test : tests) {
                 System.out.println(test);
-                System.out.printf("Doctors Comment: "+test.getComment());
+                System.out.println("Doctor's Comment: "+test.getComment());
                 System.out.println();
             }
         }
@@ -261,8 +263,11 @@ public class Main {
         while (sent != -1) {
             System.out.println("enter firstName");
             String firstName = scanner.next();
+
+            firstName = firstName.substring(0,1).toUpperCase() + firstName.substring(1);
             System.out.println("enter last name");
             String lastName = scanner.next();
+            lastName = lastName.substring(0,1).toUpperCase() + lastName.substring(1);
             System.out.println("""
                 select gender
                 1. Male
@@ -297,23 +302,28 @@ public class Main {
     }
 
     private static void viewAllPatients() {
+        List<User> users = hospital.getUsers();
+        for (User user :users){
+            System.out.println(user);
+        }
     }
 
     private static void visitHospital() {
         System.out.println("enter your location");
         String location = scanner.next();
+
+        location = location.substring(0,1).toUpperCase() + location.substring(1);
         System.out.print("fetching hospital data in " + location);
         slow();
-
         System.out.println("available hospitals in " + location);
-        String[] names = {"Divine Health", "Graceful Health", "Forever Health", "Good Life"};
+        String[] names = {"Divine Health", "Graceful Health", "Forever Health", "Good Life", "St' Nicolas"};
         for (int i = 0; i < names.length; i++) {
             System.out.println(i + 1 + ". " + names[i]);
         }
         System.out.println("choose hospital by entering id");
         int id = scanner.nextInt();
         hospital = new Hospital(names[id - 1], location);
-        System.out.println("Welcome to " + hospital.getName() + "," + hospital.getLocation());
+        System.out.println("Welcome to " + hospital.getName() + " Hospital, " + hospital.getLocation());
     }
 
     private static void goToHospitals() {
