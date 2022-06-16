@@ -35,4 +35,10 @@ class MedicalTestTest {
         test.setTestName("Xochipilli test");
         assertEquals("Xochipilli test",test.getTestName());
     }
+
+    @Test
+    void addComment() {
+        test.addComment("smooth hello!!!");
+        assertEquals("smooth hello!!!",test.getComment());
+    }
 }
