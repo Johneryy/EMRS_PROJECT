@@ -9,10 +9,10 @@ public class Doctor {
 
 
 
-    public Doctor(String firstName, String lastName, String gender, int age) {
+    public Doctor(String firstName, String lastName, Gender gender, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.gender = gender;
+        this.gender = String.valueOf(gender);
         this.age = age;
         doctorId = id++;
     }
@@ -56,5 +56,12 @@ public class Doctor {
         return age;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("""
+                id: %d
+                name: %s %s
+                gender: %s
+                """,getDoctorId(),getFirstName(),getLastName(),getGender());
+    }
 }
