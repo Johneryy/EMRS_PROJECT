@@ -1,4 +1,3 @@
-
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -324,10 +323,6 @@ public class Main {
         hospital = new Hospital(names[id - 1], location);
         System.out.println("Welcome to " + hospital.getName() + " Hospital, " + hospital.getLocation());
     }
-
-    private static void goToHospitals() {
-    }
-
     private static void slow() {
         for (int i = 0; i < 8; i++) {
             System.out.print(".");
