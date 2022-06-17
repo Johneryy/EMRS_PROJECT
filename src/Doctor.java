@@ -20,9 +20,7 @@ public class Doctor {
         return doctorId;
     }
     
-    public void setDoctorId(int id){
-        doctorId = id;
-    }
+
     
 
     public String getFirstName() {

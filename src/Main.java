@@ -25,13 +25,12 @@ public class Main {
                 switch (input) {
                     case 1 -> admin();
                     case 2 -> patient();
-                    case 0 -> i = -1;
-                    default -> main(args);
+                    default -> i = -1;
                 }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            main(args);
+//            main(args);
         }
     }
 
@@ -42,7 +41,7 @@ public class Main {
         Gender[] gender = {Gender.MALE,Gender.FEMALE,Gender.NON_BINARY};
         String[] tests= {"Hiv", "Malaria", "Gonorrhoea","diabetes","High Blood Pressure","Fever"};
         Random random = new Random();
-        for (int i = 0; i <5 ; i++) {
+        for (int i = 0; i < defaultLastNames.length ; i++) {
             MedicalTest test = new MedicalTest(tests[i]);
             Doctor doctor = new Doctor(defaultFirstNames[i],defaultLastNames[i], gender[random.nextInt(gender.length-1)],i+27);
             hospital.addDoctor(doctor);
@@ -74,7 +73,7 @@ public class Main {
         System.out.println("enter your password");
         String password = scanner.next();
         User user = hospital.getAUser(email, password);
-        System.out.println("Welcome");
+        System.out.println("Welcome "+user.getFirstName());
         int sent  =0;
         while (sent != -1) {
             System.out.println("""
@@ -114,16 +113,16 @@ public class Main {
                 """,recordUSe.getHospital().getName(), recordUSe.getDoctor().getFirstName(),
                 recordUSe.getDoctor().getFirstName(), recordUSe.getGenotype(),recordUSe.getBloodGroup());
         System.out.println("Tests taken");
-        System.out.println("=".repeat(10));
+        System.out.println("=".repeat(27));
         for(Record record : records) {
             List<MedicalTest> tests = record.getTests();
             for(MedicalTest test : tests) {
-                System.out.println(test);
+                System.out.println(test +"test date: "+ test.getDateTime());
                 System.out.println("Doctor's Comment: "+test.getComment());
                 System.out.println();
             }
         }
-        System.out.println("=".repeat(10));
+        System.out.println("=".repeat(27));
 
 
     }
@@ -173,11 +172,11 @@ public class Main {
             int testId = scanner.nextInt();
             MedicalTest test = hospital.getATest(testId);
             System.out.print("taking blood samples");
-            slow();
+//            slow();
             System.out.print("performing tests.");
-            slow();
+//            slow();
             System.out.print("gathering results.");
-            slow();
+//            slow();
             int doctorsSize = hospital.getDoctors().size();
             Doctor doctor = hospital.getDoctors().get(random.nextInt(doctorsSize));
             String[] comments = {"You have ", "You don't have "};

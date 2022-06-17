@@ -1,10 +1,24 @@
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MedicalTest {
     private static int id = 1;
     private int testId;
     private String testName;
-    private Date dateTime;
+    private LocalDateTime dateTime;
+    private String comment;
+
+    public MedicalTest(String testName) {
+        this.testName = testName;
+        testId = id++;
+        dateTime = LocalDateTime.now();
+
+    }
+
+    public static void resetId() {
+        id = 1;
+    }
 
     public String getComment() {
         return comment;
@@ -14,23 +28,10 @@ public class MedicalTest {
         this.comment = comment;
     }
 
-    public void setDateTime() {
-        dateTime = new Date();
-    }
-    public Date getDateTime(){
-        return dateTime;
-    }
-
-    private String comment;
-
-    public MedicalTest(String testName) {
-        this.testName = testName;
-        testId = id++;
-
-    }
-
-    public static void resetId() {
-        id = 1;
+    public String getDateTime() {
+        LocalDateTime now = dateTime;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return now.format(formatter);
     }
 
     public int getTestId() {
@@ -54,6 +55,6 @@ public class MedicalTest {
         return String.format("""
                 test id: %d
                 test Name: %s
-                """,getTestId(),getTestName());
+                """, getTestId(), getTestName());
     }
 }
