@@ -1,6 +1,5 @@
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -36,11 +35,11 @@ public class Main {
     }
 
     private static void autoEmployDoctorsAndCreateTests() {
-        String[] defaultFirstNames = {"Mike","Boyo","Chidi","nwannem","jodi","ben"};
+        String[] defaultFirstNames = {"Mike","John","Grace","Mofe","Wale","Abigail"};
 
-        String[] defaultLastNames = {"kolade","lomo","omalicham","oyibo","ngozi","chukwudi",};
+        String[] defaultLastNames = {"Boyo","Ery","Royal","Eyi","Saheed","Chibob",};
         Gender[] gender = {Gender.MALE,Gender.FEMALE,Gender.NON_BINARY};
-        String[] tests= {"Hiv", "Malaria", "Gonorrhoea","diabetes","High Blood Pressure","Fever"};
+        String[] tests= {"HIV", "MALARIA", "GONORRHEA","DIABETES","COVID-19","STD"};
         Random random = new Random();
         for (int i = 0; i <5 ; i++) {
             MedicalTest test = new MedicalTest(tests[i]);
@@ -69,12 +68,12 @@ public class Main {
     }
 
     private static void patientSignIn() {
-        System.out.println("enter your email");
+        System.out.println("Enter your email");
         String email = scanner.next();
-        System.out.println("enter your password");
+        System.out.println("Enter your password");
         String password = scanner.next();
         User user = hospital.getAUser(email, password);
-        System.out.println("Welcome");
+        System.out.println("Welcome "+user.getFirstName());
         int sent  =0;
         while (sent != -1) {
             System.out.println("""
@@ -94,7 +93,7 @@ public class Main {
     }
 
     private static void viewRecords(User user) {
-        System.out.println("enter password");
+        System.out.println("Enter password");
         String password = scanner.next();
 
         List<Record> records = user.getRecords(password);
@@ -133,7 +132,7 @@ public class Main {
         BloodGroup[] bloodGroups = { BloodGroup.A_Positive, BloodGroup.A_Negative,BloodGroup.B_Positive,
                 BloodGroup.B_Negative, BloodGroup.AB_Positive, BloodGroup.AB_Negative, BloodGroup.O_Positive, BloodGroup.O_Negative};
 
-        System.out.println("select your genotype");
+        System.out.println("Select your genotype");
         for (int i = 0; i < genotypes.length ; i++) {
             System.out.println(i+1+". "+genotypes[i]);
         }
@@ -146,7 +145,7 @@ public class Main {
             case 5 -> genotype = Genotype.SS;
             default -> genotype = Genotype.AA;
         }
-        System.out.println("select your blood Group");
+        System.out.println("Select your blood Group");
         for (int i = 0; i < bloodGroups.length ; i++) {
             System.out.println(i+1+". "+ bloodGroups[i]);
         }
@@ -169,14 +168,14 @@ public class Main {
             for (MedicalTest test : tests) {
                 System.out.println(test);
             }
-            System.out.println("enter test Id to take test");
+            System.out.println("Enter test Id to take test");
             int testId = scanner.nextInt();
             MedicalTest test = hospital.getATest(testId);
-            System.out.print("taking blood samples");
+            System.out.print("Taking blood samples");
             slow();
-            System.out.print("performing tests.");
+            System.out.print("Performing tests.");
             slow();
-            System.out.print("gathering results.");
+            System.out.print("Gathering results.");
             slow();
             int doctorsSize = hospital.getDoctors().size();
             Doctor doctor = hospital.getDoctors().get(random.nextInt(doctorsSize));
@@ -189,7 +188,7 @@ public class Main {
             user.addRecord(record);
             System.out.println(test.getComment());
 
-            System.out.println("enter 1 to take another test or 0 to end");
+            System.out.println("Enter 1 to take another test or 0 to end");
             int input = scanner.nextInt();
             if (input != 1) {
                 sent = -1;
@@ -204,13 +203,13 @@ public class Main {
         String firstname = scanner.next();
         System.out.println("Enter your Last Name");
         String lastname = scanner.next();
-        System.out.println("enter your e-mail");
+        System.out.println("Enter your e-mail");
         String email = scanner.next();
-        System.out.println("create your password ->");
+        System.out.println("Create your password ->");
         String password = scanner.next();
         User user = new User(firstname, lastname, email, password);
         hospital.addUser(user);
-        System.out.println("registered successfully");
+        System.out.println("Registered successfully");
     }
 
     private static void admin() {
@@ -219,10 +218,10 @@ public class Main {
             System.out.println("""
                     1. View all patients
                     2. View all Doctors
-                    3. employ Doctor
-                    4. create new test
-                    5. view all available tests
-                    0. homepage
+                    3. Employ Doctor
+                    4. Create new test
+                    5. View all available tests
+                    0. Homepage
                     """);
             int input = scanner.nextInt();
             switch (input) {
@@ -246,11 +245,11 @@ public class Main {
     private static void createTest() {
         int sent = 0;
         while (sent != -1) {
-            System.out.println("enter test name");
+            System.out.println("Enter test name");
             String name = scanner.next();
             MedicalTest test = new MedicalTest(name);
             hospital.addTest(test);
-            System.out.println("press 1 to add another test or 0 to end");
+            System.out.println("Press 1 to add another test or 0 to end");
             int input = scanner.nextInt();
             if (input != 1) {
                 sent = -1;
@@ -261,15 +260,15 @@ public class Main {
     private static void employDoctor() {
         int sent = 0;
         while (sent != -1) {
-            System.out.println("enter firstName");
+            System.out.println("Enter firstName");
             String firstName = scanner.next();
 
             firstName = firstName.substring(0,1).toUpperCase() + firstName.substring(1);
-            System.out.println("enter last name");
+            System.out.println("Enter last name");
             String lastName = scanner.next();
             lastName = lastName.substring(0,1).toUpperCase() + lastName.substring(1);
             System.out.println("""
-                select gender
+                Select gender
                 1. Male
                 2. Female
                 3. Others
@@ -281,11 +280,11 @@ public class Main {
                 case 3 -> gender = Gender.NON_BINARY;
                 default -> gender = Gender.MALE;
             }
-            System.out.println("enter age");
+            System.out.println("Enter age");
             int age = scanner.nextInt();
             Doctor doctor = new Doctor(firstName,lastName,gender,age);
             hospital.addDoctor(doctor);
-            System.out.println("press 1 to add another doctor or 0 to end");
+            System.out.println("Press 1 to add another doctor or 0 to end");
             int user = scanner.nextInt();
             if (user != 1) {
                 sent = -1;
@@ -309,25 +308,24 @@ public class Main {
     }
 
     private static void visitHospital() {
-        System.out.println("enter your location");
+        System.out.println("Enter your location");
         String location = scanner.next();
 
         location = location.substring(0,1).toUpperCase() + location.substring(1);
-        System.out.print("fetching hospital data in " + location);
+        System.out.print("Fetching hospital data in " + location);
         slow();
-        System.out.println("available hospitals in " + location);
+        System.out.println("Available hospitals in " + location);
         String[] names = {"Divine Health", "Graceful Health", "Forever Health", "Good Life", "St' Nicolas"};
         for (int i = 0; i < names.length; i++) {
             System.out.println(i + 1 + ". " + names[i]);
         }
-        System.out.println("choose hospital by entering id");
+        System.out.println("Choose hospital by entering id");
         int id = scanner.nextInt();
         hospital = new Hospital(names[id - 1], location);
         System.out.println("Welcome to " + hospital.getName() + " Hospital, " + hospital.getLocation());
     }
 
     private static void goToHospitals() {
-
     }
 
     private static void slow() {
