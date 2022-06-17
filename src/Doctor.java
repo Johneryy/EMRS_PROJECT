@@ -56,5 +56,12 @@ public class Doctor {
         return age;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("""
+                id: %d
+                name: %s %s
+                gender: %s
+                """,getDoctorId(),getFirstName(),getLastName(),getGender());
+    }
 }

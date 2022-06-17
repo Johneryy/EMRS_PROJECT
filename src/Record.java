@@ -9,14 +9,17 @@ public class Record {
     private BloodGroup bloodGroup;
     private Genotype genotype;
 
-
-
-
     public Record(Hospital hospital, Doctor doctor) {
         this.hospital = hospital;
         this.doctor = doctor;
         recordId = id++;
     }
+
+    public static void resetId() {
+        id = 1;
+    }
+
+
 
     public ArrayList<MedicalTest> getTests() {
         return medicalTests;
@@ -30,39 +33,38 @@ public class Record {
         return hospital;
     }
 
-    public void setHospital(Hospital hospital) {
-        this.hospital = hospital;
-    }
 
     public Doctor getDoctor() {
         return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
     }
 
     public int getRecordId() {
         return recordId;
     }
 
-    public ArrayList<MedicalTest> getMedicalTests() {
-        return medicalTests;
-    }
-
-    public BloodGroup getBloodGroup() {
-        return bloodGroup;
+    public String getBloodGroup() {
+        return String.valueOf(bloodGroup);
     }
 
     public void setBloodGroup(BloodGroup bloodGroup) {
         this.bloodGroup = bloodGroup;
     }
 
-    public Genotype getGenotype() {
-        return genotype;
+    public String getGenotype() {
+        return String.valueOf(genotype);
     }
 
     public void setGenotype(Genotype genotype) {
         this.genotype = genotype;
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format("""
+                id: %d
+                Hospital: %s
+                Doctor: %s %s
+                """, getRecordId(), hospital.getName(), doctor.getFirstName(), doctor.getLastName());
     }
 }
