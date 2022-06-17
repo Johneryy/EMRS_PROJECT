@@ -1,7 +1,10 @@
+import java.util.Date;
+
 public class MedicalTest {
     private static int id = 1;
     private int testId;
     private String testName;
+    private Date dateTime;
 
     public String getComment() {
         return comment;
@@ -11,11 +14,19 @@ public class MedicalTest {
         this.comment = comment;
     }
 
+    public void setDateTime() {
+        dateTime = new Date();
+    }
+    public Date getDateTime(){
+        return dateTime;
+    }
+
     private String comment;
 
     public MedicalTest(String testName) {
         this.testName = testName;
         testId = id++;
+
     }
 
     public static void resetId() {
