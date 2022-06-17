@@ -9,6 +9,7 @@ class UserTest {
 
     @BeforeEach
     void setUp() {
+        User.resetId();
         user = new User("Ife", "Oluwa", "ife@gmail.com", "GodIsGreat007");
     }
 
@@ -29,7 +30,7 @@ class UserTest {
         Hospital hospital = new Hospital("GoodLife","sabo");
         Doctor doctor = new Doctor("Ken","Beck",Gender.MALE,46);
         Record record = new Record(hospital,doctor);
-//        user.setRecords(record);
+        user.addRecord(record);
         assertEquals(1, user.getRecords("GodIsGreat007").size());
 
 
@@ -45,30 +46,45 @@ class UserTest {
 
     @Test
     void getFirstName() {
+        assertEquals("Ife", user.getFirstName());
     }
 
     @Test
     void setFirstName() {
+        user.setFirstName("tunde");
+        assertEquals("tunde", user.getFirstName());
     }
 
     @Test
     void getLastName() {
+        assertEquals("Oluwa", user.getLastName());
     }
 
     @Test
     void setLastName() {
+        user.setLastName("macros");
+        assertEquals("macros", user.getLastName());
     }
 
     @Test
     void getEmail() {
+        assertEquals("ife@gmail.com", user.getEmail());
+
     }
 
     @Test
     void setEmail() {
-    }
+        user.setEmail("fife");
+        assertEquals("fife", user.getEmail());
+       }
 
     @Test
     void setPassword() {
         user.setPassword("");
+    }
+
+    @Test
+    void iSPassword() {
+        assertTrue(user.iSPassword("GodIsGreat007"));
     }
 }

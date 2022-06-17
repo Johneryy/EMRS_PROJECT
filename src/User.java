@@ -20,6 +20,10 @@ public class User {
         userId = id++;
     }
 
+    public static void resetId() {
+        id = 1;
+    }
+
     public int getUserId() {
         return userId;
     }
