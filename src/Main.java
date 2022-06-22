@@ -311,7 +311,7 @@ public class Main {
     }
 
     private static void visitHospital() {
-        System.out.print("Enter your location-> ");
+        System.out.print("Enter your location -> ");
         String location = scanner.next();
 
         location = location.substring(0,1).toUpperCase() + location.substring(1);
