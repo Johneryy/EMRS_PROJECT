@@ -314,7 +314,7 @@ public class Main {
         System.out.print("Fetching hospital data in " + location);
         slow();
         System.out.println("Available hospitals in " + location);
-        String[] names = {"Divine Health", "Graceful Health", "Forever Health", "Good Life", "St' Nicolas"};
+        String[] names = {"LASUTH", "Salem Hospital", "Colon Health", "Bambi Hospital", "St' Nicolas"};
         for (int i = 0; i < names.length; i++) {
             System.out.println(i + 1 + ". " + names[i]);
         }
