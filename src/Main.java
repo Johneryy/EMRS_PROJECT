@@ -176,9 +176,9 @@ public class Main {
             MedicalTest test = hospital.getATest(testId);
             System.out.print("Taking blood samples");
             slow();
-            System.out.print("Performing tests.");
+            System.out.print("Performing tests");
             slow();
-            System.out.print("Gathering results.");
+            System.out.print("Gathering results");
             slow();
             int doctorsSize = hospital.getDoctors().size();
             Doctor doctor = hospital.getDoctors().get(random.nextInt(doctorsSize));
